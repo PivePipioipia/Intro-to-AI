@@ -11,12 +11,12 @@ giai_bai_toan(Vx, Vy, Z) :-
 
 
 % 1. ĐIỀU KIỆN DỪNG 
+
 % Dừng khi lượng nước ở bình X hoặc bình Y bằng Z
 dong_nuoc(_, _, Z, X, Y) :-
     (X =:= Z; Y =:= Z),
     write('---------------------------------'), nl,
     write('KET QUA: Da dong duoc '), write(Z), write(' lit.'), nl,
-    !. % Dấu cắt (!) quan trọng để dừng chương trình tại đây.
 
 % 2. Nếu bình Y rỗng thì đổ nước đầy bình Y
 dong_nuoc(Vx, Vy, Z, X, Y) :-
@@ -38,8 +38,8 @@ dong_nuoc(Vx, Vy, Z, X, Y) :-
 % Nếu bình Y không rỗng và bình X chưa đầy
 dong_nuoc(Vx, Vy, Z, X, Y) :-
     Y > 0, X < Vx,
-    Cho_trong is Vx - X,    % Tính chỗ trống còn lại trong bình X
-    min(Y, Cho_trong, K),   % Lượng nước K đổ được là min của (nước có trong Y, chỗ trống trong X) [cite: 51]
+    Cho_trong is Vx - X,   
+    min(Y, Cho_trong, K),  
     X_new is X + K,         
     Y_new is Y - K,        
     
